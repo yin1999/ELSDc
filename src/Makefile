@@ -20,11 +20,11 @@
 # You may need to indicate the location of Lapack library in your system.
 # For that, uncomment the following line and replace `/usr/lib` with
 # the directory where the library is located.
-#LIB= -I/usr/lib
+INCLUDE_LIBS=-L./lapack-3.2.1
 OPT= -O3
 
 elsdc: main.c pgm.c svg.c elsdc.c gauss.c curve_grow.c polygon.c ring.c ellipse_fit.c rectangle.c iterator.c image.c lapack_wrapper.c misc.c 
-	cc $(OPT) $(LIB) -o $@ $^ -llapack -lm
+	cc $(OPT) $(LIB) -o $@ $^ $(INCLUDE_LIBS) -llapack -lblas -lgfortran -lm
 
 clean:
 	rm elsdc
