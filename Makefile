@@ -17,9 +17,12 @@
 #  makefile - This file belongs to ELSDc project (Ellipse and Line Segment 
 #             Detector with continuous validation).
 
-elsdc:
+elsdc: dep_lib
 	make -C src
 	mv src/elsdc .
+
+dep_lib:
+	make -C lapack-3.2.1
 
 test:
 	./elsdc shapes.pgm
